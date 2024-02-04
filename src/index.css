@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
+:root {
+  --font-family: 'Oswald', sans-serif;
+  font-size: 1.05em;
+}
+@media (pointer: none), (pointer: coarse) {
+  @media (orientation: portrait) {
+    :root {
+      font-size: 3vw;
+    }
+  }
+  @media (orientation: landscape) {
+    :root {
+      font-size: 2vw;
+    }
+  }
+}
