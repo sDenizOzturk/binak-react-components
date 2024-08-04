@@ -12,3 +12,11 @@ export { BaseWrapper } from './components/BaseWrapper';
 
 export { BaseFormInput } from './components/form/BaseFormInput';
 export { BaseFormItem } from './components/form/BaseFormItem';
+
+export {
+  setColor1,
+  setColor2,
+  setColor3,
+  setColor4,
+  setColor5,
+} from './utils/color';

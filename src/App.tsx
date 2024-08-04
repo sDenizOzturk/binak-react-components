@@ -1,9 +1,15 @@
 import React from 'react';
 import './App.css';
 
-import { BaseButton, BaseCard, BaseInput, BaseWrapper } from '../dist/main';
+import { BaseButton, BaseCard, BaseInput, BaseWrapper } from '../lib/main';
+
+import { setColor1, setColor2, setColor3 } from '../lib/main';
 
 function App() {
+  setColor1(2, 255, 5);
+  setColor2(255, 5, 5);
+  setColor3(5, 5, 255);
+
   return (
     <>
       <BaseWrapper mode={['vertical-center']} style={{ height: '90vh' }}>
