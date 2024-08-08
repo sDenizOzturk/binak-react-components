@@ -5,13 +5,13 @@ import { bounce } from '../utils/animationVariants';
 
 interface BaseButtonProps extends HTMLMotionProps<'button'> {
   children?: ReactNode;
-  mode?: '' | 'flat' | 'outline' | 'formButton' | 'text';
+  mode?: 'default' | 'flat' | 'outline' | 'text' | 'rectangle';
   noAnimation?: boolean;
 }
 
 export const BaseButton: FC<BaseButtonProps> = ({
   children,
-  mode = '',
+  mode = 'default',
   noAnimation = false,
   ...props
 }) => {

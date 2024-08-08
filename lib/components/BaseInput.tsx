@@ -4,7 +4,7 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 
 interface BaseInputProps extends InputHTMLAttributes<HTMLInputElement> {
   register?: UseFormRegisterReturn<string> | undefined;
-  autoComplete?: string | undefined;
+  autoComplete?: string;
 }
 
 export const BaseInput: FC<BaseInputProps> = ({

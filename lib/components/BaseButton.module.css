@@ -48,7 +48,8 @@
   cursor: pointer;
   color: var(--color2);
 }
-.text:hover {
+.text:hover,
+.text:active {
   background: none;
   color: var(--color2_95);
 }
@@ -59,4 +60,19 @@
 .outline:active {
   background-color: var(--color3);
   color: var(--color2);
+}
+
+.rectangle {
+  text-decoration: none;
+  color: var(--color3);
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: 0;
+  margin: 0 0.2rem;
+}
+
+.rectangle:hover {
+  border: 1px solid var(--color3);
 }

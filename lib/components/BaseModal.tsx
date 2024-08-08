@@ -37,6 +37,12 @@ export const BaseModal: FC<BaseModalProps> = ({
 }) => {
   const dialog = useRef<HTMLDialogElement>(null);
 
+  const modalDiv = document.createElement('div');
+  modalDiv.id = 'modal';
+  if (!Array.from(document.body.children).some((el) => el.id === 'modal')) {
+    document.body.appendChild(modalDiv);
+  }
+
   useEffect(() => {
     if (open) {
       dialog.current!.show();

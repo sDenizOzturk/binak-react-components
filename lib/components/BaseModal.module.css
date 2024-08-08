@@ -33,6 +33,7 @@ header {
   color: var(--color1);
   width: 100%;
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 header h2 {

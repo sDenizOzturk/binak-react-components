@@ -4,6 +4,7 @@
   padding: 1rem;
   margin: 1rem auto;
   background: var(--color3_1);
+  box-sizing: border-box;
 }
 .white-BG {
   background: var(--color1);

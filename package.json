@@ -1,13 +1,18 @@
 {
   "name": "binak-react-components",
   "private": false,
-  "version": "0.0.7",
+  "version": "1.0.1",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sDenizOzturk/binak-react-components.git"
+  },
+  "homepage": "https://sdenizozturk.github.io/binak-react-components/",
   "scripts": {
     "dev": "vite",
     "build": "tsc --p ./tsconfig-build.json && vite build",
@@ -16,8 +21,10 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "npm": "^10.8.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remove": "^0.1.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -29,8 +36,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "framer-motion": "^11.0.3",
+    "usehooks-ts": "^3.1.0",
     "glob": "^10.3.10",
-    "react-hook-form": "^7.50.0",
+    "react-hook-form": "^7.52.2",
     "react-router-dom": "^6.22.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",

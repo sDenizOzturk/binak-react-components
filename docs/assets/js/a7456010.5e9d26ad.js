@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbinak_react_components_docs=self.webpackChunkbinak_react_components_docs||[]).push([[235],{8552:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-pages","id":"default"}')}}]);

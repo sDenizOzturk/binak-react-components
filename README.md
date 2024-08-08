@@ -1,6 +1,8 @@
 # Bınak React Components
 
-A React UI component library for Bınak products.
+A React UI component library for [Bınak](https://binakybs.com/) products.
+
+![Auto complete](./binak-react-components-docs/docs/img/autoComplete.gif)
 
 ## Components
 
@@ -30,32 +32,6 @@ Import the components you need and use:
 import { BaseButton, BaseCard, BaseInput, BaseWrapper } from 'binak-react-components';
 ```
 
-![Auto complete](./images/autoComplete.gif)
-
-> [!IMPORTANT]
-> While using form components, you should use register prop to pass [React Hook Form register method:](https://react-hook-form.com/docs/useform/register)
-
-```javascript
-<BaseCard>
-  <form onSubmit={handleSubmit(onSubmit)}>
-    <h2>{t('Create Link')}</h2>
-    <BaseFormInput
-      id="doorNumber"
-      label={t('Door Number')}
-      error={errors.doorNumber}
-      register={register('doorNumber', {
-        required: true,
-        maxLength: 20,
-      })}
-      errorMessage={t('Please enter a valid door number')}
-    />
-    <BaseWrapper mode={['align-right']}>
-      <BaseButton type="submit">{t('Create')}</BaseButton>
-    </BaseWrapper>
-  </form>
-</BaseCard>
-```
-
 > [!WARNING]
 > It is suggested to be used in apps which only created with Vite.
 
@@ -66,5 +42,10 @@ import { BaseButton, BaseCard, BaseInput, BaseWrapper } from 'binak-react-compon
 - Vite
 - Framer Motion
 - React Hook Form
+- Usehooks-ts
 
-[![BINAK](./images/BINAK.png)](http://binakybs.com)
+## Documentation
+
+- Check out the [documentation](https://sdenizozturk.github.io/binak-react-components/) for guides.
+
+[![BINAK](./binak-react-components-docs/docs/img/binak.png)](http://binakybs.com)
