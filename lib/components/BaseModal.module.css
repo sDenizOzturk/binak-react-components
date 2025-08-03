@@ -8,7 +8,7 @@
   z-index: 8;
 }
 
-dialog {
+.dialog {
   position: absolute;
   z-index: 9;
   border-radius: 12px;
