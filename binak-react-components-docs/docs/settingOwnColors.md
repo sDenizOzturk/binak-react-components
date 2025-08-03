@@ -13,7 +13,7 @@ import {
   setColor3,
   setColor4,
   setColor5,
-} from 'binak-react-components';
+} from "binak-react-components";
 ```
 
 ## Parameters
@@ -35,3 +35,8 @@ setColor5(255, 0, 255);
 ```
 
 ![SetColor](./img/setColor.jpg)
+
+:::caution
+If you are using Next.js (especially with app router and SSR), make sure to call `setColorX` functions **inside a React event handler or a `useEffect` hook**.  
+Calling them at the top-level (outside a function/component) will cause errors like `document is not defined` during server-side rendering.
+:::
