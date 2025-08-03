@@ -1,3 +1,4 @@
+"use client";
 export const setColor1 = (red: number, green: number, blue: number) =>
   setColor(1, red, green, blue);
 
@@ -14,7 +15,7 @@ export const setColor5 = (red: number, green: number, blue: number) =>
   setColor(5, red, green, blue);
 
 const setColor = (color: number, red: number, green: number, blue: number) => {
-  const root: any = document.querySelector(':root');
+  const root: any = document.querySelector(":root");
   root.style.setProperty(`--color${color}`, `rgb(${red}, ${green}, ${blue})`);
 
   for (let i = 1; i < 10; i++) {

@@ -1,16 +1,15 @@
-import { useRef, useEffect, FC, ReactNode, CSSProperties } from 'react';
-import { createPortal } from 'react-dom';
-import { BaseButton } from './BaseButton';
-
-import classes from './BaseModal.module.css';
-
-import { AnimatePresence, motion } from 'framer-motion';
-import { duration } from '../utils/animationVariants';
+"use client";
+import { FC, ReactNode, CSSProperties, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { BaseButton } from "./BaseButton";
+import classes from "./BaseModal.module.css";
+import { duration } from "../utils/animationVariants";
 
 interface BaseModalProps {
   open: boolean;
   children?: ReactNode;
-  onClose: () => any;
+  onClose: () => void;
   center?: boolean;
   title?: string;
   content?: ReactNode;
@@ -29,82 +28,82 @@ export const BaseModal: FC<BaseModalProps> = ({
   title,
   content,
   baseDialog,
-  okayButton = '',
+  okayButton = "",
   menuItems,
   backdropStyle,
   dialogStyle,
   ...props
 }) => {
-  const dialog = useRef<HTMLDialogElement>(null);
-
-  const modalDiv = document.createElement('div');
-  modalDiv.id = 'modal';
-  if (!Array.from(document.body.children).some((el) => el.id === 'modal')) {
-    document.body.appendChild(modalDiv);
-  }
+  const [modalContainer, setModalContainer] = useState<HTMLElement | null>(
+    null
+  );
 
   useEffect(() => {
-    if (open) {
-      dialog.current!.show();
-    } else {
-      dialog.current!.close();
+    let el = document.getElementById("modal");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "modal";
+      document.body.appendChild(el);
     }
-  }, [open]);
+    setModalContainer(el);
+  }, []);
 
-  function tryClose(event: { stopPropagation: () => void }) {
-    event.stopPropagation();
-    onClose();
-  }
+  if (!modalContainer) return null;
 
-  const baseDialogContent = (
+  const positionStyle =
+    !center && typeof window !== "undefined"
+      ? { top: `${window.scrollY + 20}px`, ...dialogStyle }
+      : dialogStyle;
+
+  const contentNode = baseDialog ? (
     <>
       <header>
         <h2>{title}</h2>
       </header>
       <section>
-        <p style={{ wordWrap: 'break-word' }}>{content}</p>
-        {open ? children : null}
+        <p style={{ wordWrap: "break-word" }}>{content}</p>
+        {children}
       </section>
       <menu>
         {okayButton && <BaseButton onClick={onClose}>{okayButton}</BaseButton>}
         {menuItems}
       </menu>
     </>
+  ) : (
+    <>{children}</>
   );
+
   return createPortal(
-    <>
-      <AnimatePresence>
-        {open && (
+    <AnimatePresence>
+      {open && (
+        <>
           <motion.div
-            initial={{ opacity: 0, scale: 1 }}
-            animate={{ opacity: 1, scale: 1 }}
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={duration.m}
-            onClick={tryClose}
+            onClick={onClose}
             className={classes.backdrop}
             style={backdropStyle}
-          ></motion.div>
-        )}
-
-        <motion.dialog
-          //key={'dialog' + Date.now()}
-          initial={{ opacity: 1, scale: 0.6, y: 200 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={duration.m}
-          className={center ? classes.center : ''}
-          ref={dialog}
-          onClose={onClose}
-          style={
-            !center
-              ? { top: +window.top!.scrollY + 20 + 'px', ...dialogStyle }
-              : dialogStyle
-          }
-          {...props}
-        >
-          {baseDialog && baseDialogContent}
-          {!baseDialog && open ? children : null}
-        </motion.dialog>
-      </AnimatePresence>
-    </>,
-    document.getElementById('modal')!
+          />
+          <motion.dialog
+            key="dialog"
+            open={open}
+            initial={{ opacity: 0, scale: 0.6, y: 200 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.6, y: 200 }}
+            transition={duration.m}
+            className={`${classes.dialog} ${center ? classes.center : ""}`}
+            style={positionStyle}
+            onClose={onClose}
+            {...props}
+          >
+            {contentNode}
+          </motion.dialog>
+        </>
+      )}
+    </AnimatePresence>,
+    modalContainer
   );
 };
